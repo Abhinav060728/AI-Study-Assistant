@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sign in – AI Study Assistant</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="login.css">
+</head>
+<body>
+<div class="page">
+  <section class="brand" aria-hidden="true">
+    <div class="logo">🎓</div>
+    <h1>Learn smarter,<br>score higher.</h1>
+    <p>Your AI study partner that answers from your own notes.</p>
+    <ul>
+      <li><span>💬</span>Ask doubts and get cited answers</li>
+      <li><span>📄</span>Turn PDFs into study guides</li>
+      <li><span>📊</span>Track your progress every week</li>
+    </ul>
+    <div class="bot">🤖</div>
+  </section>
+
+  <section class="panel">
+    <div class="box">
+      <h2 id="title">Welcome back</h2>
+      <p class="sub" id="sub">Sign in to continue studying.</p>
+
+      <div class="tabs" role="tablist" aria-label="Sign in or create account">
+        <button type="button" role="tab" id="tabIn" aria-selected="true">Sign in</button>
+        <button type="button" role="tab" id="tabUp" aria-selected="false">Create account</button>
+      </div>
+
+      <form id="form" novalidate>
+        <div class="field" id="nameField" hidden>
+          <label for="name">Full name</label>
+          <input id="name" type="text" autocomplete="name" placeholder="Abhinav Gupta">
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" type="email" autocomplete="email" placeholder="you@college.edu">
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <div class="pw">
+            <input id="password" type="password" autocomplete="current-password" placeholder="At least 8 characters">
+            <button type="button" id="toggle" aria-label="Show password">Show</button>
+          </div>
+        </div>
+        <label class="remember"><input type="checkbox" id="remember" checked> Keep me signed in on this device</label>
+        <p class="error" id="error" role="alert" hidden></p>
+        <button class="submit" id="submit" type="submit">Sign in</button>
+      </form>
+
+      <div class="or"><span>or</span></div>
+      <button class="demo" id="demo" type="button">Continue as demo user</button>
+    </div>
+  </section>
+</div>
+<script src="auth.js"></script>
+<script src="login.js"></script>
+</body>
+</html>

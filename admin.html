@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin – users and logins</title>
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+<main>
+  <h1>Users and logins</h1>
+  <p class="sub">Only people with the admin key can see this data. The data comes from <b>users.json</b> and <b>logins.json</b> on the server.</p>
+  <form id="keyform">
+    <input id="key" type="password" placeholder="Admin key" aria-label="Admin key" autocomplete="off">
+    <button type="submit">Load data</button>
+    <button type="button" id="csv" disabled>Download users (CSV)</button>
+  </form>
+  <p id="msg" role="alert"></p>
+
+  <h2>All users <span id="count"></span></h2>
+  <div class="scroll"><table id="users"><thead><tr><th>Name</th><th>Email</th><th>Signed up</th><th>Logins</th><th>Last login</th></tr></thead><tbody></tbody></table></div>
+
+  <h2>Recent activity</h2>
+  <div class="scroll"><table id="hist"><thead><tr><th>Time</th><th>Event</th><th>Email</th><th>IP</th><th>Browser</th></tr></thead><tbody></tbody></table></div>
+</main>
+<script src="admin.js"></script>
+</body>
+</html>

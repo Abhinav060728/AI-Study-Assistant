@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AI Study Assistant – Dashboard</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Caveat:wght@600&display=swap">
+<link rel="stylesheet" href="style.css">
+<script src="auth.js"></script>
+<script>Auth.requireLogin();</script>
+</head>
+<body>
+<div class="shell">
+  <aside class="side">
+    <div class="brand"><div class="lg">🎓</div><b>AI Study<br>Assistant</b><small>Learn smarter, score higher</small></div>
+    <nav id="nav" aria-label="Main"></nav>
+    <div class="promo"><div class="rk">🚀</div><b>Your study partner with AI</b><button type="button" id="keep">Keep learning ✨</button></div>
+  </aside>
+
+  <div class="main">
+    <div class="top">
+      <label class="search"><span aria-hidden="true">🔍</span><input id="gsearch" type="text" placeholder="Search anything… (e.g. Explain OS scheduling)" autocomplete="off"></label>
+      <div class="grow"></div>
+      <button class="bell" type="button" aria-label="Notifications, 2 new" id="bell">🔔<i id="badge">2</i></button>
+      <div class="me"><div class="av" id="av">AG</div><span id="uname">Abhinav Gupta</span><button class="logout" id="logout" type="button">Log out</button></div>
+    </div>
+
+    <section class="hero">
+      <div>
+        <h1 id="hello">Hello, Abhinav! 👋</h1>
+        <h2 id="heroSub">Your AI Study Assistant is here to make your learning easier.</h2>
+        <p id="heroText">Ask questions, upload your notes, generate quizzes, and track your progress.</p>
+        <button class="cta" type="button" id="start">Start studying →</button>
+      </div>
+      <div class="art" aria-hidden="true">
+        <svg viewBox="0 0 200 190"><ellipse cx="100" cy="182" rx="62" ry="8" fill="#0002"/>
+          <rect x="30" y="88" width="14" height="30" rx="7" fill="#6D5BF0"/><rect x="156" y="88" width="14" height="30" rx="7" fill="#6D5BF0"/>
+          <rect x="45" y="58" width="110" height="90" rx="40" fill="#fff"/><rect x="58" y="78" width="84" height="50" rx="24" fill="#1B1F4B"/>
+          <path d="M80 104q8-12 16 0M104 104q8-12 16 0" stroke="#5EE1FF" stroke-width="5" fill="none" stroke-linecap="round"/>
+          <path d="M38 60 100 32l62 28-62 22z" fill="#1B1F4B"/><path d="M160 60v28" stroke="#F5B31B" stroke-width="4"/><circle cx="160" cy="91" r="5" fill="#F5B31B"/>
+          <path d="M56 130h88v44H56z" fill="#3B5BDB"/><path d="M100 130v44" stroke="#fff" stroke-width="2"/></svg>
+        <span>Study Smart!</span>
+      </div>
+    </section>
+
+    <section class="stats" id="stats" aria-label="Your stats"></section>
+    <section class="tiles" id="tiles" aria-label="Tools"></section>
+
+    <section class="row">
+      <div class="card" id="chatcard">
+        <h3>💬 AI Study Chat <a href="#chat" id="viewall">View all →</a></h3>
+        <div id="chatlog" aria-live="polite"></div>
+        <div id="docs" class="docs"></div>
+        <form class="chatf" id="chatf"><button class="att" id="attach" type="button" aria-label="Attach a file">📎</button><input type="file" id="chatfile" accept=".pdf,.docx,.txt,.md" multiple hidden><input id="cq" type="text" placeholder="Type your question…" aria-label="Your question" autocomplete="off"><button class="snd" type="submit" aria-label="Send">➤</button></form>
+      </div>
+      <div class="card">
+        <h3>☁️ Generate study guide</h3>
+        <p style="margin:0 0 10px;color:var(--mute)">Upload your PDF or notes to get a complete study guide.</p>
+        <div class="drop" id="drop">
+          <div class="cl">☁️</div><div>Drag and drop your file here</div><div style="color:var(--mute)">or</div>
+          <button class="choose" type="button" id="choose">Choose file</button>
+          <input type="file" id="file" accept=".pdf,.docx,.txt,.md" hidden>
+          <div id="fname"></div>
+          <select id="gdoc" class="sel2" aria-label="Choose a document" hidden></select>
+          <button class="gen" id="gen" type="button" disabled>Generate study guide</button>
+          <small>Supports PDF, DOCX, TXT (max 10 MB)</small>
+        </div>
+      </div>
+      <div class="card">
+        <h3>📊 Your progress <select class="sel" aria-label="Range"><option>This week</option><option>This month</option></select></h3>
+        <div class="prog">
+          <svg viewBox="0 0 140 140" role="img" aria-label="78 percent overall progress"><defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#22C55E"/><stop offset="1" stop-color="#3B82F6"/></linearGradient></defs>
+            <circle cx="70" cy="70" r="54" fill="none" stroke="var(--line)" stroke-width="12"/>
+            <circle cx="70" cy="70" r="54" fill="none" stroke="url(#g)" stroke-width="12" stroke-linecap="round" id="arc" stroke-dasharray="264.6 339.3" transform="rotate(-90 70 70)"/>
+            <text x="70" y="72" text-anchor="middle" font-size="26" font-weight="800" fill="var(--ink)" id="pct">78%</text>
+            <text x="70" y="90" text-anchor="middle" font-size="11" fill="var(--mute)">Overall</text></svg>
+          <div class="leg" id="leg"></div>
+        </div>
+        <svg viewBox="0 0 300 70" style="width:100%;margin-top:8px" aria-hidden="true"><path id="area" d="" fill="color-mix(in srgb,#6D5BF0 14%,transparent)"/><path id="line" d="" fill="none" stroke="#6D5BF0" stroke-width="2" stroke-linejoin="round"/></svg>
+        <p class="note" id="weekNote" hidden></p>
+        <div class="days"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
+      </div>
+    </section>
+
+    <section class="bot">
+      <div class="card"><h3>⭐ Quick actions</h3><div class="qa" id="qa"></div></div>
+      <div class="card cheer"><span>🏆</span><div><b style="font-size:17px" id="cheerT">You’re doing great!</b><div style="color:var(--mute)" id="cheerS">Keep going to achieve your goals.</div></div></div>
+    </section>
+  </div>
+</div>
+<div class="modal" id="gm" hidden>
+  <div class="mbox" role="dialog" aria-modal="true" aria-labelledby="gt">
+    <div class="mh"><h3 id="gt">Study guide</h3>
+      <div class="mact"><button type="button" id="gcopy">Copy</button><button type="button" id="gdl">Download</button><button type="button" id="gclose" aria-label="Close">✕</button></div></div>
+    <div class="mbody" id="gbody"></div>
+  </div>
+</div>
+<div id="toast" role="status"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+<script src="docs.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
